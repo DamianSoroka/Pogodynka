@@ -1,7 +1,7 @@
 *{
   margin: 0;
   padding: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 body {
@@ -11,8 +11,7 @@ body {
 #main_content {
   margin-left: auto;
   margin-right: auto;
-  border-radius: 0 !important;
-  height: 890px;
+  height: auto;
   background-color: rgb(21, 21, 21);
   color: aliceblue;
   text-align: center;
@@ -29,7 +28,6 @@ body {
   margin-left: auto;
   margin-right: auto;
   padding: 20px;
-  border-radius: 1rem;
   white-space: pre-wrap;
 }
 
@@ -39,12 +37,34 @@ body {
   font-size: 10px;
 }
 
-#daily_weather {
-  margin-bottom: 20px;
-  padding: 40px;
-  height: 70px; /*zrobić zmienną wysokosc/dlugosc kafelka*/
-  border-radius: 1rem;
+#kafelki {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  height: auto;
+  width: fit-content;
+  
+  border-radius: 0.5em;
   background-color: rgba(70, 162, 222, 0.42);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+  
+.kafelek {
+  float: left;
+  margin: 1em;
+
+  height: 6em;
+  aspect-ratio: 1/1; /*width = height*/
+
+  border-radius: 1em;
+  background-color: rgba(70, 162, 222, 0.42);
+  font-size: 1.2vw;
+
 }
 
 #hourly_weather {
@@ -52,24 +72,26 @@ body {
   flex-direction: row;
   justify-content: center;
   line-height: 40px;
+  font-size: 2vw;
+
 }
 
 #hourly_weather_1 {
   padding: 20px;
   height: 480px;
-  width: 100px;
+  width: 7em;
   border-top-left-radius: 1rem;
   border-bottom-left-radius: 1rem;
   background-color: rgba(70, 162, 222, 0.42);
-  text-align: left;
+  text-align: justify;
 }
 
 #hourly_weather_2 {
   padding: 20px;
   height: 480px;
-  width: 100px;
+  width: 7em;
   background-color: rgba(70, 162, 222, 0.42);
-  text-align: left;
+  text-align: justify;
 }
 
 #bottom_right_footer {
@@ -235,14 +257,6 @@ body {
   transform: rotate(180deg);
 }
 
-#kafelki {
-  margin-top: -35px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 90%;
-  height: 90%;
-}
-
 .navigation_bar_value {
   display: block;
   float: left;
@@ -281,16 +295,6 @@ body {
 .night_background {
   background-image: url("../public/images/others/weather_night_background.png");
   background-size: cover;
-}
-
-.kafelek {
-  float: left;
-  margin: 10px;
-  padding: 10px;
-  height: 100px;
-  width: 100px;
-  border-radius: 1rem;
-  background-color: rgba(70, 162, 222, 0.42);/*aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa*/
 }
 
 .daily_icons {

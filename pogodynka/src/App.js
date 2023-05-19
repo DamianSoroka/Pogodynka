@@ -441,9 +441,7 @@ function App() {
         <a id="meteo_ad" href="https://open-meteo.com/">Weather data by Open-Meteo.com</a>
         <h1>WEATHER</h1><br></br><br></br>
         <h2><p>Next 7 Days:</p></h2><br></br>
-        <div id="daily_weather">
           <ICykKafelki/>
-        </div>
         <h2><p>Today's Weather</p></h2><br></br>
         <div id="hourly_weather">
           <div id="left_arrow_image" onClick={dayBack}/>
