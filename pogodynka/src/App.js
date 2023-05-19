@@ -332,7 +332,7 @@ function App() {
     }
   }
 
-  let addJebanyKafelek = (kafelek, temperature, isItDay, i) => {
+  let addTile = (kafelek, temperature, isItDay, i) => {
     kafelki.push(<div key={i} className="kafelek" alt="kafelek">{kafelek}<br/>{temperature}<br/>{isItDay}</div>);
   }
 
@@ -430,7 +430,7 @@ function App() {
 
         convertJSONIntoSomeActualGoodLookingFormat = addTh(day) + " " + monthAsWord(month);
 
-        addJebanyKafelek(convertJSONIntoSomeActualGoodLookingFormat, hotAf, isItDay, i);
+        addTile(convertJSONIntoSomeActualGoodLookingFormat, hotAf, isItDay, i);
       }
       
       getCurrentTime();
