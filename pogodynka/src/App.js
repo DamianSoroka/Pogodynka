@@ -1,4 +1,5 @@
 import './App.css';
+import './Icons.css';
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -284,7 +285,7 @@ function App() {
     let currTime = new Date();
     currHour = currTime.toLocaleTimeString();
     currHour = currHour.charAt(0) + currHour.charAt(1) + currHour.charAt(2) + currHour.charAt(3) + currHour.charAt(4);
-  }
+  } // pobiera aktualną godzinę
 
   let nightOrDay = (sunrise, sunset) => {
     if (currHour >= sunrise && currHour <= sunset) {
@@ -294,7 +295,7 @@ function App() {
       weatherForecastDiv = "night_background";
       return "night";
     }
-  }
+  } // daje tło aplikacji na dzienne lub nocne
 
   let RefreshWeather = () => {
     if (!refreshingCycle) {
@@ -302,7 +303,7 @@ function App() {
       setInterval(getWeatherData, 1800000);
       refreshingCycle = true;
     }
-  }
+  } // odświerza pogode co 30 minut
 
   let isDay = (hour, sunrise, sunset) => {
     if (hour >= sunrise && hour <= sunset) {
@@ -310,7 +311,7 @@ function App() {
     } else {
       dayNight = "night";
     }
-  }
+  } // sprawdza, czy jest dzień, czy noc
 
   let dayBack = () => {
     if (dayNumber !== 0) {
@@ -318,7 +319,7 @@ function App() {
       dayNumber--;
       getWeatherData();
     }
-  }
+  } // skrócony zapis kodu, powinien działać szybciej, NIE SPAMIĆ funkcji
 
   let dayForward = () => {
     if (dayNumber !== 6) {
@@ -326,11 +327,11 @@ function App() {
       dayNumber++;
       getWeatherData();
     }
-  }
+  } // skrócony zapis kodu, powinien działać szybciej, NIE SPAMIĆ funkcji
 
   let addTile = (kafelek, temperature, isItDay, i) => {
     kafelki.push(<div key={i} className="kafelek" alt="kafelek">{kafelek}<br/>{temperature}<br/>{isItDay}</div>);
-  }
+  } // ta funkcja dodaje kafelek z pogodą na dany dzień (prognoza na następne 7 dni)
 
   let ICykKafelki = () => {
     return <div id="kafelki">{kafelki}</div>;
@@ -440,7 +441,7 @@ function App() {
           <ICykKafelki/>
         <h2><p>Today's Weather</p></h2><br></br>
         <div id="hourly_weather">
-          <div id="left_arrow_image" onClick={dayBack}/>
+          <div id="prev_day" onClick={dayBack}/>
           <div id="hourly_weather_1">
             {finalHourlyData1}
           </div>
@@ -449,7 +450,7 @@ function App() {
             {finalHourlyData2}
           </div>
           <WeatherIcons2 />
-          <div id="right_arrow_image" onClick={dayForward}/>
+          <div id="next_day" onClick={dayForward}/>
         </div>
       </div>);
 

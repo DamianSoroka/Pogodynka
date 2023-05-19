@@ -1,0 +1,140 @@
+#clearsky {
+        height: 40px;
+        width: 40px;
+        background-image: url("../public/images/animated/clear\ sky.svg");
+        background-size: cover;
+        padding: 0;
+      }
+      
+#fewclouds {
+        height: 40px;
+        width: 40px;
+        background-image: url("../public/images/animated/few\ clouds.svg");
+        background-size: cover;
+      }
+      
+#morethanfewclouds {
+        height: 40px;
+        width: 40px;
+        background-image: url("../public/images/animated/more\ than\ few\ clouds.svg");
+        background-size: cover;
+      }
+      
+#definitelymorethanfewclouds {
+        height: 40px;
+        width: 40px;
+        background-image: url("../public/images/animated/definitely\ more\ than\ few\ clouds.svg");
+        background-size: cover;
+      }
+      
+#justaonebigdaddycloud {
+        height: 40px;
+        width: 40px;
+        background-image: url("../public/images/animated/just\ a\ one\ big\ daddy\ cloud.svg");
+        background-size: cover;
+      }
+      
+#drizzle {
+        height: 40px;
+        width: 40px;
+        background-image: url("../public/images/animated/drizzle.svg");
+        background-size: cover;
+      }
+      
+#normalrain {
+        height: 40px;
+        width: 40px;
+        background-image: url("../public/images/animated/normal\ rain.svg");
+        background-size: cover;
+      }
+      
+#bigrain {
+        height: 40px;
+        width: 40px;
+        background-image: url("../public/images/animated/big\ rain.svg");
+        background-size: cover;
+      }
+      
+#drizzlewithsun {
+        height: 40px;
+        width: 40px;
+        background-image: url("../public/images/animated/drizzle\ with\ sun.svg");
+        background-size: cover;
+      }
+      
+#bigrainwithsun {
+        height: 40px;
+        width: 40px;
+        background-image: url("../public/images/animated/big\ rain\ with\ sun.svg");
+        background-size: cover;
+      }
+      
+#rainwithbigsun {
+        height: 40px;
+        width: 40px;
+        background-image: url("../public/images/animated/rain\ with\ big\ sun.svg");
+        background-size: cover;
+      }
+      
+#snow {
+        height: 40px;
+        width: 40px;
+        background-image: url("../public/images/animated/snow.svg");
+        background-size: cover;
+      }
+      
+#normalsnow {
+        height: 40px;
+        width: 40px;
+        background-image: url("../public/images/animated/normal\ snow.svg");
+        background-size: cover;
+      }
+      
+#snowstorm {
+        height: 40px;
+        width: 40px;
+        background-image: url("../public/images/animated/snowstorm.svg");
+        background-size: cover;
+      }
+      
+#snowwithsun {
+        height: 40px;
+        width: 40px;
+        background-image: url("../public/images/animated/snow\ with\ sun.svg");
+        background-size: cover;
+      }
+      
+#snowwithbigsun {
+        height: 40px;
+        width: 40px;
+        background-image: url("../public/images/animated/snow\ with\ big\ sun.svg");
+        background-size: cover;
+      }
+      
+#clearnight {
+        height: 40px;
+        width: 40px;
+        background-image: url("../public/images/animated/clear\ night.svg");
+        background-size: cover;
+      }
+      
+#fewcloudsinnight {
+        height: 40px;
+        width: 40px;
+        background-image: url("../public/images/animated/few\ clouds\ in\ night.svg");
+        background-size: cover;
+      }
+      
+#morethanfewcloudsinnight {
+        height: 40px;
+        width: 40px;
+        background-image: url("../public/images/animated/more\ than\ few\ clouds\ in\ night.svg");
+        background-size: cover;
+      }
+      
+#definitelymorethanfewcloudsinnight {
+        height: 40px;
+        width: 40px;
+        background-image: url("../public/images/animated/definitely\ more\ than\ few\ clouds\ in\ night.svg");
+        background-size: cover;
+      }
