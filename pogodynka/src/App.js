@@ -313,9 +313,7 @@ function App() {
   }
 
   let dayBack = () => {
-    if (dayNumber === 0) {
-      return 0;
-    } else {
+    if (dayNumber !== 0) {
       kafelki = [];
       dayNumber--;
       getWeatherData();
@@ -323,9 +321,7 @@ function App() {
   }
 
   let dayForward = () => {
-    if (dayNumber === 6) {
-      return 0;
-    } else {
+    if (dayNumber !== 6) {
       kafelki = [];
       dayNumber++;
       getWeatherData();
