@@ -72,14 +72,14 @@ body {
   flex-direction: row;
   justify-content: center;
   line-height: 40px;
-  font-size: 2vw;
+  font-size: 1.5vw;
 
 }
 
 #hourly_weather_1 {
   padding: 20px;
   height: 480px;
-  width: 7em;
+  width: 10em;
   border-top-left-radius: 1rem;
   border-bottom-left-radius: 1rem;
   background-color: rgba(70, 162, 222, 0.42);
@@ -89,7 +89,7 @@ body {
 #hourly_weather_2 {
   padding: 20px;
   height: 480px;
-  width: 7em;
+  width: 10em;
   background-color: rgba(70, 162, 222, 0.42);
   text-align: justify;
 }
