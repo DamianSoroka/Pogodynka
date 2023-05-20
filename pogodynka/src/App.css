@@ -157,3 +157,9 @@ transform:translateY(-0.5em);
   margin-left: auto;
   margin-right: auto;
 }
+
+
+
+#error_text{
+  color: white;
+}
