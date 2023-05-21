@@ -152,6 +152,14 @@ transform:translateY(-0.5em);
   background-size: cover;
 }
 
+#strom_background {
+  background-image: url("../public/images/others/weather_storm_background.png");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .daily_icons {
   margin-top: -10px;
   margin-left: auto;
@@ -159,7 +167,13 @@ transform:translateY(-0.5em);
 }
 
 
-
-#error_text{
+#error_box{
   color: white;
+  margin: 20em;
+  padding: 7em;
+  border-radius: 0.5em;
+  background-color: rgba(56, 96, 124, 0.42);
+}
+.error_text{
+font-size: 50px;
 }

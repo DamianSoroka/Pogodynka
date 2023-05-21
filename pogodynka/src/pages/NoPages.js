@@ -2,6 +2,11 @@ import '../App.css';
 
 export default function NoPage(){
     return(
-        <h1 id="error_text">Error 404</h1>
+        <div id="strom_background">
+            <div id="error_box">
+                <p class="error_text">Error 404</p>
+                <p>Page not found</p>
+            </div>
+        </div>
     )
 }
