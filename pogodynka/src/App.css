@@ -60,8 +60,8 @@ body {
 } /* CSS dla kafelka - nie ruszać */
 
 .kafelek > div{
-  width: 6em !important; /* Set the container width to fill its parent */
-  height: 6em !important; /* Set initial height to 0 to maintain aspect ratio */
+  width: 6em !important;
+  height: 6em !important;
 }
 
 #hourly_weather {
