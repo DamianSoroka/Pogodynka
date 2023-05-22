@@ -18,37 +18,13 @@ function App() {
   let hour, sunrise, sunset;
 
   let monthAsWord = (month) => {
-    switch (parseInt(month)) {
-      case 1:
-        return "January";
-      case 2:
-        return "Febuary";
-      case 3:
-        return "March";
-      case 4:
-        return "April";
-      case 5:
-        return "May";
-      case 6:
-        return "June";
-      case 7:
-        return "July";
-      case 8:
-        return "August";
-      case 9:
-        return "September";
-      case 10:
-        return "October";
-      case 11:
-        return "November";
-      case 12:
-        return "December";
-      default:
-        return "";
-    }
-  }
+    const date = new Date(); //tworzy obiekt Data
+    date.setMonth(parseInt(month) - 1);//ustawia zmienną month jako miesiąc w dacie
+    return date.toLocaleString('pl-PL', {month: 'long',}).charAt(0).toUpperCase() 
+    + date.toLocaleString('pl-PL', {month: 'long',}).slice(1);//tłumaczy na nazwę m-ca z dużej litery
+  }//Skrócony kod odpowiedzialny za nazwy m-cy (Działa nawet po polsku pl-PL)
 
-  let addTh = (day) => {
+  let addSuffix = (day) => {
     switch (Number(day)) {
       case 1:
         return "1st";
@@ -315,16 +291,16 @@ function App() {
 
   let dayBack = () => {
     if (dayNumber !== 0) {
-      kafelki = [];
       dayNumber--;
+      kafelki = [];
       getWeatherData();
     }
   } // skrócony zapis kodu, powinien działać szybciej, NIE SPAMIĆ funkcji
 
   let dayForward = () => {
     if (dayNumber !== 6) {
-      kafelki = [];
       dayNumber++;
+      kafelki = [];
       getWeatherData();
     }
   } // skrócony zapis kodu, powinien działać szybciej, NIE SPAMIĆ funkcji
@@ -384,7 +360,7 @@ function App() {
       let finalHourlyData1 = "", finalHourlyData2 = "";
       let sunrise = response.data.daily.sunrise[0].charAt(11) + response.data.daily.sunrise[0].charAt(12) + ":" + response.data.daily.sunrise[0].charAt(14) + response.data.daily.sunrise[0].charAt(15);
       let sunset = response.data.daily.sunset[0].charAt(11) + response.data.daily.sunset[0].charAt(12) + ":" + response.data.daily.sunset[0].charAt(14) + response.data.daily.sunset[0].charAt(15);
-      let hotAf = 0;
+      let temperature = 0;
 
       for (let i = 0; i<12; i++) {
         hour = response.data.hourly.time[i + (dayNumber * 24)].charAt(11) + response.data.hourly.time[i + (dayNumber * 24)].charAt(12);
@@ -421,13 +397,13 @@ function App() {
       for (let i = 0; i<7; i++) {
         day = response.data.daily.time[i].charAt(8) + response.data.daily.time[i].charAt(9);
         month = response.data.daily.time[i].charAt(5) + response.data.daily.time[i].charAt(6);
-        hotAf = response.data.daily.temperature_2m_max[i] + "℃\n";
+        temperature = response.data.daily.temperature_2m_max[i] + "℃\n";
 
         let isItDay = dayChecker(response, i);
 
-        convertJSONIntoSomeActualGoodLookingFormat = addTh(day) + " " + monthAsWord(month);
+        convertJSONIntoSomeActualGoodLookingFormat = addSuffix(day) + " " + monthAsWord(month);
 
-        addTile(convertJSONIntoSomeActualGoodLookingFormat, hotAf, isItDay, i);
+        addTile(convertJSONIntoSomeActualGoodLookingFormat, temperature, isItDay, i);
       }
       
       getCurrentTime();

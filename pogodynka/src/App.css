@@ -49,8 +49,9 @@ body {
 .kafelek {
   float: left;
   margin: 1em;
+  justify-content: center;
 
-  height: 6em;
+  height: 8em;
   aspect-ratio: 1/1; /*width = height*/
 
   border-radius: 1em;
@@ -59,8 +60,9 @@ body {
 } /* CSS dla kafelka - nie ruszać */
 
 .kafelek > div{
-transform:translateY(-0.5em);
-} /* SVG w kafelku był za nisko, trzeba dodać skalowanie wielkości SVG kafelków */
+  width: 6em !important; /* Set the container width to fill its parent */
+  height: 6em !important; /* Set initial height to 0 to maintain aspect ratio */
+}
 
 #hourly_weather {
   display: flex;
