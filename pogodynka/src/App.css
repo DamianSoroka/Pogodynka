@@ -177,3 +177,9 @@ transform:translateY(-0.5em);
 .error_text{
 font-size: 50px;
 }
+
+#info{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

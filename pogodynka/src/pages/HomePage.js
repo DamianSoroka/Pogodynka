@@ -409,6 +409,7 @@ export default function  HomePage() {
     ).pop();
   }
 
+
   let Info = () => {
     return (<div id="info">
       <div id="hourly_weather_1">
@@ -421,6 +422,7 @@ export default function  HomePage() {
       <WeatherIcons2 />
     </div>)
   }
+
 
   const getWeatherData = async () => {
     try {
@@ -492,7 +494,9 @@ export default function  HomePage() {
           <h2><p>{houerlyWeatherHeader}</p></h2><br></br>
           <div id="hourly_weather">
             <div id="prev_day" onClick={dayBack}/>
+            <div id="info">
             <Info/>
+            </div>
             <div id="next_day" onClick={dayForward}/>
           </div>
         </div>);
