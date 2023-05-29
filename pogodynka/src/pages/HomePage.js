@@ -11,6 +11,7 @@ let refreshingCycle = false;
 
 export default function  HomePage() {
   const [content, setContent] = useState("");
+  let finalHourlyData1 = "", finalHourlyData2 = "";
   let rainMeasure, snowMeasure, countingClouds;
   let weatherIconsArray = [];
   let currTime = new Date(), currHour = currTime.toLocaleTimeString();
@@ -317,11 +318,43 @@ export default function  HomePage() {
     }
   } // sprawdza, czy jest dzień, czy noc
 
+  let houerlyWeatherHeader="Today's Weather";
+
+  let getHouerlyWeatherHeader = () => {
+    switch(dayNumber){
+      default:
+        houerlyWeatherHeader="";
+        break;
+      case 0:
+        houerlyWeatherHeader="Today's Weather";
+        break;
+      case 1:
+        houerlyWeatherHeader="Weather for tomorrow";
+        break;
+      case 2:
+        houerlyWeatherHeader="Weather in "+dayNumber+" days";
+        break;
+      case 3:
+        houerlyWeatherHeader="Weather in "+dayNumber+" days";
+        break;
+      case 4:
+        houerlyWeatherHeader="Weather in "+dayNumber+" days";
+        break;
+      case 5:
+        houerlyWeatherHeader="Weather in "+dayNumber+" days";
+        break;
+      case 6:
+        houerlyWeatherHeader="Weather in "+dayNumber+" days";
+        break;
+    }
+  }
+
   let dayBack = () => {
     if (dayNumber !== 0) {
       kafelki = [];
       dayNumber--;
       getWeatherData();
+      getHouerlyWeatherHeader();
     }
   } // skrócony zapis kodu, powinien działać szybciej, NIE SPAMIĆ funkcji
 
@@ -330,6 +363,7 @@ export default function  HomePage() {
       kafelki = [];
       dayNumber++;
       getWeatherData();
+      getHouerlyWeatherHeader();
     }
   } // skrócony zapis kodu, powinien działać szybciej, NIE SPAMIĆ funkcji
 
@@ -375,6 +409,19 @@ export default function  HomePage() {
     ).pop();
   }
 
+  let Info = () => {
+    return (<div id="info">
+      <div id="hourly_weather_1">
+        {finalHourlyData1}
+      </div>
+      <WeatherIcons1 />
+      <div id="hourly_weather_2">
+        {finalHourlyData2}
+      </div>
+      <WeatherIcons2 />
+    </div>)
+  }
+
   const getWeatherData = async () => {
     try {
       const response = await axios.get(
@@ -385,7 +432,6 @@ export default function  HomePage() {
 
       let hour = "", day = "", month = "";
       let convertJSONIntoSomeActualGoodLookingFormat = "";
-      let finalHourlyData1 = "", finalHourlyData2 = "";
       let sunrise = response.data.daily.sunrise[0].charAt(11) + response.data.daily.sunrise[0].charAt(12) + ":" + response.data.daily.sunrise[0].charAt(14) + response.data.daily.sunrise[0].charAt(15);
       let sunset = response.data.daily.sunset[0].charAt(11) + response.data.daily.sunset[0].charAt(12) + ":" + response.data.daily.sunset[0].charAt(14) + response.data.daily.sunset[0].charAt(15);
       let hotAf = 0;
@@ -438,30 +484,24 @@ export default function  HomePage() {
       nightOrDay(sunrise, sunset);
 
       setContent(
-      <div id="weather_div" class={weatherForecastDiv}>
-        <a id="meteo_ad" href="https://open-meteo.com/">Weather data by Open-Meteo.com</a>
-        <h1>WEATHER</h1><br></br><br></br>
-        <h2><p>Next 7 Days:</p></h2><br></br>
-          <ICykKafelki/>
-        <h2><p>Today's Weather</p></h2><br></br>
-        <div id="hourly_weather">
-          <div id="prev_day" onClick={dayBack}/>
-          <div id="hourly_weather_1">
-            {finalHourlyData1}
+        <div id="weather_div" class={weatherForecastDiv}>
+          <a id="meteo_ad" href="https://open-meteo.com/">Weather data by Open-Meteo.com</a>
+          <h1>WEATHER</h1><br></br><br></br>
+          <h2><p>Next 7 Days:</p></h2><br></br>
+            <ICykKafelki/>
+          <h2><p>{houerlyWeatherHeader}</p></h2><br></br>
+          <div id="hourly_weather">
+            <div id="prev_day" onClick={dayBack}/>
+            <Info/>
+            <div id="next_day" onClick={dayForward}/>
           </div>
-          <WeatherIcons1 />
-          <div id="hourly_weather_2">
-            {finalHourlyData2}
-          </div>
-          <WeatherIcons2 />
-          <div id="next_day" onClick={dayForward}/>
-        </div>
-      </div>);
+        </div>);
 
       console.log('weather has entered the chat');
     } catch (error) {
       console.error(error);
     }
+    
   };
 
   return (
