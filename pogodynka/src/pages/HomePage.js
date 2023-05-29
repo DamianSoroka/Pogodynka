@@ -352,6 +352,8 @@ export default function  HomePage() {
   let dayBack = () => {
     if (dayNumber !== 0) {
       kafelki = [];
+      finalHourlyData1 = [];
+      finalHourlyData2 = [];
       dayNumber--;
       getWeatherData();
       getHouerlyWeatherHeader();
@@ -361,6 +363,8 @@ export default function  HomePage() {
   let dayForward = () => {
     if (dayNumber !== 6) {
       kafelki = [];
+      finalHourlyData1 = [];
+      finalHourlyData2 = [];
       dayNumber++;
       getWeatherData();
       getHouerlyWeatherHeader();
