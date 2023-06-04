@@ -3,7 +3,6 @@ import '../App.css';
 import '../Icons.css';
 import React, { useState } from 'react';
 import axios from 'axios';
-//import NoPage from './pages/NoPages';
 
 
 
@@ -21,6 +20,9 @@ export default function  HomePage() {
   let kafelki = [];
   let rain = "", snow = "", clouds;
   let hour, sunrise, sunset;
+
+  let finalDetailsData ="";
+  let finalDetailsDate ="";
 
   let monthAsWord = (month) => {
     switch (parseInt(month)) {
@@ -304,7 +306,11 @@ export default function  HomePage() {
 
   let RefreshWeather = () => {
     if (!refreshingCycle) {
+      kafelki = [];
+      finalHourlyData1 = [];
+      finalHourlyData2 = [];
       getWeatherData();
+      getWeatherDataDetails();
       setInterval(getWeatherData, 1800000);
       refreshingCycle = true;
     }
@@ -356,6 +362,7 @@ export default function  HomePage() {
       finalHourlyData2 = [];
       dayNumber--;
       getWeatherData();
+      getWeatherDataDetails();
       getHouerlyWeatherHeader();
     }
   } // skrócony zapis kodu, powinien działać szybciej, NIE SPAMIĆ funkcji
@@ -367,6 +374,7 @@ export default function  HomePage() {
       finalHourlyData2 = [];
       dayNumber++;
       getWeatherData();
+      getWeatherDataDetails();
       getHouerlyWeatherHeader();
     }
   } // skrócony zapis kodu, powinien działać szybciej, NIE SPAMIĆ funkcji
@@ -426,7 +434,21 @@ export default function  HomePage() {
       <WeatherIcons2 />
     </div>)
   }
-
+  
+  
+  let DetailsPage = () => {
+    return(
+      <div id="details">
+        <br></br>
+        <div class="container">
+        <h4>Details about weather for {finalDetailsDate}</h4><br></br>
+        <p>{finalDetailsData}</p>
+        </div>
+        <br></br>
+      </div>
+    )
+  }
+  
 
   const getWeatherData = async () => {
     try {
@@ -498,11 +520,12 @@ export default function  HomePage() {
           <h2><p>{houerlyWeatherHeader}</p></h2><br></br>
           <div id="hourly_weather">
             <div id="prev_day" onClick={dayBack}/>
-            <div id="info">
             <Info/>
-            </div>
             <div id="next_day" onClick={dayForward}/>
+            <br></br>
           </div>
+          <br></br>
+          <DetailsPage/>
         </div>);
 
       console.log('weather has entered the chat');
@@ -511,6 +534,34 @@ export default function  HomePage() {
     }
     
   };
+
+  //Detailsy
+  const getWeatherDataDetails = async () => {
+    try {
+      const response = await axios.get(
+        `https://api.open-meteo.com/v1/forecast?latitude=54.35&longitude=18.65&daily=temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,uv_index_max,precipitation_sum,precipitation_probability_max,windspeed_10m_max&timezone=auto`
+      );
+      console.log(response);
+        
+        let dayDetails = response.data.daily.time[dayNumber].charAt(8) + response.data.daily.time[dayNumber].charAt(9);
+        let monthDetails = response.data.daily.time[dayNumber].charAt(5) + response.data.daily.time[dayNumber].charAt(6);
+        let hotAfDetails = response.data.daily.temperature_2m_max[dayNumber] + "℃\n";
+        let notHotAfDetails = response.data.daily.temperature_2m_min[dayNumber] + "℃\n";
+        let windSpeed = response.data.daily.windspeed_10m_max[dayNumber];
+        let rainChance = response.data.daily.precipitation_probability_max[dayNumber];
+        let rainSum = response.data.daily.precipitation_sum[dayNumber];
+        let uvIndex = response.data.daily.uv_index_max[dayNumber];
+
+        let convertJSONIntoSomeActualGoodLookingFormatDetails = addTh(dayDetails) + " " + monthAsWord(monthDetails);
+
+        finalDetailsDate = convertJSONIntoSomeActualGoodLookingFormatDetails;
+        finalDetailsData = "Highest Temperature: "+hotAfDetails+"Lowest Temperature: "+notHotAfDetails+"Wind speed: "+windSpeed+"km/h\nPrecipitation probability: "+rainChance+"%\nPrecipitation sum: "+rainSum+"mm\nUV Index: "+uvIndex;
+        
+      console.log('Details entered');
+    } catch(error) {
+      console.error(error);
+    }
+    };
 
   return (
       <div id="whole_site">
