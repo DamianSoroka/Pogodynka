@@ -514,7 +514,7 @@ export default function  HomePage() {
       setContent(
         <div id="weather_div" class={weatherForecastDiv}>
           <a id="meteo_ad" href="https://open-meteo.com/">Weather data by Open-Meteo.com</a>
-          <h1>WEATHER</h1><br></br><br></br>
+          <h1>POGODYNKA</h1><br></br><br></br>
           <h2><p>Next 7 Days:</p></h2><br></br>
             <ICykKafelki/>
           <h2><p>{houerlyWeatherHeader}</p></h2><br></br>
