@@ -11,6 +11,7 @@ body {
 #main_content {
   margin-left: auto;
   margin-right: auto;
+  height: auto;
   background-color: rgb(21, 21, 21);
   color: aliceblue;
   text-align: center;
@@ -59,7 +60,8 @@ body {
 } /* CSS dla kafelka - nie ruszać */
 
 .kafelek > div{
-transform:translateY(-0.5em);
+  width: 6em !important
+  height: 6em !important
 } /* SVG w kafelku był za nisko, trzeba dodać skalowanie wielkości SVG kafelków */
 
 #hourly_weather {
